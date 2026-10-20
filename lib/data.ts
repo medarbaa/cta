@@ -15,13 +15,13 @@ export const communeInfo = {
   councilMembers: 18,
   phone: "0528-86-XX-XX",
   fax: "0528-86-XX-XX",
-  email: "commune.arbaasahel@gmail.com",
-  facebookUrl: "https://www.facebook.com/100081016219910/",
+  email: "ctarbaasahel@gmail.com",
+  facebookUrl: "https://www.facebook.com/profile.php?id=100081016219910",
   address: "مقر الجماعة الترابية أربعاء الساحل، دائرة تيزنيت، إقليم تيزنيت",
   postalCode: "85000",
   latitude: 29.7428,
   longitude: -9.8375,
-  logo: process.env.NODE_ENV === "production" ? "/cta/logo.jpg" : "/logo.jpg",
+  logo: process.env.NODE_ENV === "production" ? "/cta/logo.jpg" : "/logo2.PNG",
 };
 
 export const news = [

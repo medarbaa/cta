@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import "./globals.css";
+import SplashScreen from "@/components/SplashScreen";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -24,9 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl" className={cairo.variable}>
-      <head>
-        <link rel="icon" href={process.env.NODE_ENV === "production" ? "/cta/logo.jpg" : "/logo.jpg"} />
+    <html lang="ar" dir="rtl" className={cairo.variable} suppressHydrationWarning>
+  <head>
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `try{if(localStorage.getItem('splash_seen')==='true'){document.documentElement.classList.add('splash-seen')}}catch(e){}`,
+      }}
+    />
+    <link rel="icon" href={process.env.NODE_ENV === "production" ? "/cta/logo.jpg" : "/logo.jpg"} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
@@ -34,6 +40,7 @@ export default function RootLayout({
         className="font-[family-name:var(--font-cairo)] antialiased min-h-screen flex flex-col bg-slate-50 text-slate-800"
         style={{ direction: "rtl" }}
       >
+        <SplashScreen />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

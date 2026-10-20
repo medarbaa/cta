@@ -86,3 +86,117 @@ html {
 .stat-number {
   font-variant-numeric: tabular-nums;
 }
+
+
+
+
+/* ===== Splash Screen ===== */
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.splash-seen .splash {
+  display: none;
+}
+.splash--leave {
+  opacity: 0;
+  transform: scale(1.05);
+  pointer-events: none;
+}
+.splash__glow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  max-width: 90vw;
+  max-height: 90vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 56, 168, 0.1), transparent 70%);
+  animation: pulse 3s ease-in-out infinite;
+}
+.splash__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  padding: 0 20px;
+  text-align: center;
+}
+.splash__logo-wrap {
+  position: relative;
+  width: 210px;
+  height: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.splash__logo {
+  object-fit: contain;
+  mix-blend-mode: multiply; /* يجعل خلفية الـ JPG البيضاء شفافة */
+  animation: logoIn 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.splash__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: var(--royal-blue);
+  border-right-color: var(--logo-yellow);
+  animation: spin 1.6s linear infinite;
+}
+.splash__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--royal-blue-dark);
+  animation: fadeUp 0.9s ease 0.4s both;
+}
+.splash__subtitle {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #64748b;
+  animation: fadeUp 0.9s ease 0.6s both;
+}
+.splash__bar {
+  width: 190px;
+  height: 4px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  overflow: hidden;
+  animation: fadeUp 0.9s ease 0.8s both;
+}
+.splash__bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--royal-blue), var(--logo-yellow));
+  animation-name: load;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes logoIn {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin  { to { transform: rotate(360deg); } }
+@keyframes load  { to { width: 100%; } }
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50%      { transform: scale(1.12); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash__ring, .splash__glow { animation: none; }
+}
