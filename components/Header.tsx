@@ -44,7 +44,7 @@ export default function Header() {
             {/* Real Logo */}
             <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-xl overflow-hidden shadow-sm border border-slate-200 bg-white p-0.5">
               <Image
-                src="/logo.jpg"
+                src={communeInfo.logo}
                 alt="شعار الجماعة الترابية أربعاء الساحل"
                 fill
                 className="object-contain"

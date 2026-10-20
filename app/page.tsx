@@ -79,7 +79,7 @@ export default function HomePage() {
               <div className="bg-white rounded-2xl p-6 shadow-2xl text-center border-4 border-[#FFDE00] max-w-sm w-full">
                 <div className="relative w-44 h-44 mx-auto mb-3">
                   <Image
-                    src="/logo.jpg"
+                    src={communeInfo.logo}
                     alt="شارة الجماعة الترابية أربعاء الساحل"
                     fill
                     className="object-contain"

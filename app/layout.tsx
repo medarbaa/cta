@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" className={cairo.variable}>
       <head>
-        <link rel="icon" href="/logo.jpg" />
+        <link rel="icon" href={process.env.NODE_ENV === "production" ? "/cta/logo.jpg" : "/logo.jpg"} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>

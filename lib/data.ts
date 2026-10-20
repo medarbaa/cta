@@ -21,6 +21,7 @@ export const communeInfo = {
   postalCode: "85000",
   latitude: 29.7428,
   longitude: -9.8375,
+  logo: process.env.NODE_ENV === "production" ? "/cta/logo.jpg" : "/logo.jpg",
 };
 
 export const news = [
