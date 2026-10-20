@@ -1,69 +1,419 @@
+import Link from "next/link";
 import Image from "next/image";
+import { news, projects, services, stats, communeInfo, announcements } from "@/lib/data";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div style={{ direction: "rtl" }}>
+      {/* ===== HERO SECTION ===== */}
+      <section
+        className="relative min-h-[540px] flex items-center overflow-hidden text-white"
+        style={{
+          background: "linear-gradient(135deg, #00184A 0%, #002B82 50%, #0038A8 100%)",
+        }}
+      >
+        {/* Subtle geometric pattern overlay */}
+        <div className="absolute inset-0 opacity-10">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="souss-hero-pat" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+                <polygon points="30,5 55,30 30,55 5,30" fill="none" stroke="white" strokeWidth="1" />
+                <circle cx="30" cy="30" r="10" fill="none" stroke="#FFDE00" strokeWidth="1" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#souss-hero-pat)" />
+          </svg>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Top Yellow Ribbon */}
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#FFDE00]"></div>
+
+        <div className="max-w-7xl mx-auto px-4 py-12 relative z-10 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-8">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-blue-100 text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
+                <span className="w-2 h-2 rounded-full bg-[#FFDE00] animate-pulse"></span>
+                <span>البوابة الإلكترونية الرسمية — إقليم تيزنيت — جهة سوس ماسة</span>
+              </div>
+
+              <h1 className="text-3xl sm:text-5xl font-black leading-tight mb-2">
+                {communeInfo.name}
+              </h1>
+              <div className="text-sm sm:text-base font-bold text-[#FFDE00] font-mono mb-3">
+                {communeInfo.nameTifinagh}
+              </div>
+              <p className="text-blue-100 text-base sm:text-lg mb-6 leading-relaxed max-w-2xl font-light">
+                مرحباً بكم في البوابة الرسمية لجماعة أربعاء الساحل، المنصة الموحدة للاطلاع على مستجدات التدبير الجماعي، خدمات القرب، والمشاريع التنموية الكبرى الرامية إلى خدمة ساكنة أزيد من 90 دواراً.
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/services"
+                  className="bg-[#FFDE00] hover:bg-yellow-400 text-[#00184A] font-extrabold px-6 py-3 rounded-xl transition-all shadow-md transform hover:-translate-y-0.5 text-sm"
+                >
+                  دليل خدمات المواطن
+                </Link>
+                <Link
+                  href="/jamaa"
+                  className="bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-3 rounded-xl border border-white/30 backdrop-blur-sm transition-all text-sm"
+                >
+                  المجلس الجماعي والمكتب
+                </Link>
+                <a
+                  href={communeInfo.facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#00226B] hover:bg-[#00184A] text-white font-semibold px-4 py-3 rounded-xl border border-blue-400/40 transition-all text-sm flex items-center gap-2"
+                >
+                  <svg className="w-4 h-4 fill-current text-[#FFDE00]" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                  <span>صفحة الفيسبوك</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Right Card: Official Logo Display */}
+            <div className="lg:col-span-4 flex justify-center">
+              <div className="bg-white rounded-2xl p-6 shadow-2xl text-center border-4 border-[#FFDE00] max-w-sm w-full">
+                <div className="relative w-44 h-44 mx-auto mb-3">
+                  <Image
+                    src="/logo.jpg"
+                    alt="شارة الجماعة الترابية أربعاء الساحل"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+                <div className="text-[#0038A8] font-bold text-base mb-0.5">
+                  شارة الشرف لجماعة أربعاء الساحل
+                </div>
+                <div className="text-xs text-slate-500 font-bold mb-2">
+                  " {communeInfo.motto} "
+                </div>
+                <div className="text-[11px] text-slate-400 bg-slate-50 py-1.5 px-3 rounded-lg border border-slate-100">
+                  دائرة تيزنيت — عمالة إقليم تيزنيت
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* ===== STATS BAR ===== */}
+      <section className="bg-white border-b border-slate-200 shadow-sm relative z-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-x-reverse divide-slate-100">
+            {stats.map((stat, i) => (
+              <div key={i} className="text-center py-6 px-3">
+                <div className="text-2xl sm:text-3xl font-black text-[#0038A8] stat-number">{stat.value}</div>
+                <div className="text-xs text-[#00226B] font-bold mt-0.5">{stat.unit}</div>
+                <div className="text-[11px] font-semibold text-slate-500 mt-1">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== NEWS & ANNOUNCEMENTS ===== */}
+      <section className="py-12 px-4 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Latest News */}
+            <div className="lg:col-span-2">
+              <div className="flex items-center justify-between mb-6 pb-2 border-b border-slate-200">
+                <h2 className="text-xl sm:text-2xl font-black text-slate-800 flex items-center gap-2">
+                  <span className="w-2 h-6 rounded bg-[#0038A8] inline-block"></span>
+                  <span>مستجدات وأنشطة الجماعة</span>
+                </h2>
+                <a
+                  href={communeInfo.facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-[#0038A8] hover:text-[#00226B] font-bold flex items-center gap-1"
+                >
+                  <span>متابعة على فايسبوك</span>
+                  <span>←</span>
+                </a>
+              </div>
+
+              <div className="space-y-4">
+                {news.slice(0, 4).map((item) => (
+                  <article
+                    key={item.id}
+                    className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-slate-200 overflow-hidden flex flex-col sm:flex-row"
+                  >
+                    {/* Date badge with Royal Blue */}
+                    <div className="bg-[#0038A8] text-white flex sm:flex-col items-center justify-center p-3 sm:w-24 flex-shrink-0 text-center gap-1 sm:gap-0">
+                      <span className="text-lg sm:text-2xl font-black leading-none text-[#FFDE00]">
+                        {new Date(item.date).getDate()}
+                      </span>
+                      <span className="text-xs text-blue-100">
+                        {new Date(item.date).toLocaleDateString("ar-MA", { month: "short" })}
+                      </span>
+                      <span className="text-[11px] text-blue-200">
+                        {new Date(item.date).getFullYear()}
+                      </span>
+                    </div>
+
+                    <div className="p-4 sm:p-5 flex-1">
+                      <span className="inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full mb-2 bg-[#EBF2FF] text-[#0038A8]">
+                        {item.category}
+                      </span>
+                      <h3 className="font-bold text-slate-900 text-sm sm:text-base leading-snug mb-2 hover:text-[#0038A8] transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed line-clamp-2">
+                        {item.excerpt}
+                      </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            {/* Announcements & Official Notices */}
+            <div>
+              <div className="flex items-center justify-between mb-6 pb-2 border-b border-slate-200">
+                <h2 className="text-xl sm:text-2xl font-black text-slate-800 flex items-center gap-2">
+                  <span className="w-2 h-6 rounded bg-[#FFDE00] inline-block"></span>
+                  <span>الإعلانات والصفقات</span>
+                </h2>
+                <Link href="/media/announcements" className="text-xs text-[#0038A8] font-bold hover:underline">
+                  عرض الكل ←
+                </Link>
+              </div>
+
+              <div className="space-y-3">
+                {announcements.map((ann) => (
+                  <div
+                    key={ann.id}
+                    className="bg-white rounded-xl border border-slate-200 p-4 shadow-sm hover:border-[#0038A8] transition-all"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span
+                        className="text-[10px] px-2 py-0.5 rounded font-bold"
+                        style={{
+                          backgroundColor: ann.type === "صفقات عمومية" ? "#FEF3C7" : "#EBF2FF",
+                          color: ann.type === "صفقات عمومية" ? "#92400E" : "#0038A8",
+                        }}
+                      >
+                        {ann.type}
+                      </span>
+                      {ann.reference && (
+                        <span className="text-[10px] text-slate-400 font-mono">{ann.reference}</span>
+                      )}
+                    </div>
+                    <p className="text-xs sm:text-sm font-bold text-slate-800 leading-snug mb-2">
+                      {ann.title}
+                    </p>
+                    <div className="flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-slate-100">
+                      <span>{new Date(ann.date).toLocaleDateString("ar-MA")}</span>
+                      {ann.deadline && (
+                        <span className="text-amber-700 font-bold">
+                          آخر أجل: {new Date(ann.deadline).toLocaleDateString("ar-MA")}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* President Spotlight Box */}
+              <div className="mt-6 bg-[#00226B] rounded-2xl p-5 text-white shadow-md border border-blue-900">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 rounded-full bg-[#FFDE00] text-[#00226B] flex items-center justify-center font-bold text-xl">
+                    👤
+                  </div>
+                  <div>
+                    <div className="text-xs text-blue-200">رئيس المجلس الجماعي</div>
+                    <div className="text-base font-black text-white">{communeInfo.president}</div>
+                  </div>
+                </div>
+                <p className="text-xs text-blue-100 leading-relaxed mb-3">
+                  مرحباً بجميع المواطنات والمواطنين. نعمل سوياً لخدمة الجماعة والنهوض بمختلف الدواوير والمجالات التابعة لأربعاء الساحل.
+                </p>
+                <Link
+                  href="/jamaa/president"
+                  className="block text-center bg-white/10 hover:bg-white/20 text-white text-xs font-bold py-2 rounded-lg transition"
+                >
+                  كلمة الرئيس ومهام المجلس ←
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== CITIZEN SERVICES ===== */}
+      <section className="py-12 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-10">
+            <div className="inline-block bg-[#EBF2FF] text-[#0038A8] text-xs font-bold px-3 py-1 rounded-full mb-2">
+              خدمات القرب الإدارية
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-2">
+              خدمات المواطن والمرتفقين
+            </h2>
+            <p className="text-slate-500 text-sm max-w-xl mx-auto">
+              تيسير المساطر الإدارية وتقديم الخدمات الأساسية لساكنة أربعاء الساحل ومغاربة العالم المنحدرين من المنطقة.
+            </p>
+            <div className="flex justify-center mt-3 gap-1.5">
+              <div className="h-1 w-10 rounded bg-[#0038A8]"></div>
+              <div className="h-1 w-6 rounded bg-[#FFDE00]"></div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {services.map((service) => (
+              <Link
+                key={service.id}
+                href={service.href}
+                className="service-card bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center hover:bg-white cursor-pointer shadow-sm group"
+              >
+                <div className="w-14 h-14 mx-auto mb-3 rounded-xl bg-white shadow-sm flex items-center justify-center text-2xl border border-slate-100 group-hover:scale-105 transition-transform">
+                  {service.icon === "leaf" && "🌊"}
+                  {service.icon === "building" && "🏗️"}
+                  {service.icon === "document" && "📄"}
+                  {service.icon === "computer" && "💻"}
+                  {service.icon === "water" && "🐟"}
+                  {service.icon === "book" && "📚"}
+                </div>
+                <div className="font-bold text-xs sm:text-sm text-slate-800 mb-1 group-hover:text-[#0038A8] transition-colors">
+                  {service.title}
+                </div>
+                <div className="text-[11px] text-slate-500 leading-snug">
+                  {service.description}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== PROJECTS & DEVELOPMENT ===== */}
+      <section className="py-12 px-4 bg-[#F1F5F9]">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-3">
+            <div>
+              <div className="text-xs text-[#0038A8] font-bold">برنامج عمل الجماعة 2022-2027</div>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900">المشاريع التنموية والأوراش</h2>
+            </div>
+            <Link
+              href="/jamaa/action-plan"
+              className="inline-flex items-center gap-2 bg-[#0038A8] text-white font-bold text-xs px-4 py-2.5 rounded-lg hover:bg-[#00226B] transition shadow-sm w-fit"
+            >
+              <span>تفاصيل برنامج العمل</span>
+              <span>←</span>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 hover:shadow-md transition-shadow"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <span
+                    className="text-[10px] font-bold px-2.5 py-0.5 rounded-full"
+                    style={{
+                      backgroundColor: project.status === "منجز" ? "#DCFCE7" : "#FEF3C7",
+                      color: project.status === "منجز" ? "#166534" : "#92400E",
+                    }}
+                  >
+                    {project.status}
+                  </span>
+                  <span className="text-[11px] text-slate-400">{project.category}</span>
+                </div>
+                <h3 className="font-bold text-slate-800 text-sm mb-2 leading-snug">{project.title}</h3>
+                <p className="text-xs text-slate-500 mb-4 leading-relaxed">{project.description}</p>
+
+                {/* Progress bar */}
+                <div className="mb-3">
+                  <div className="flex justify-between text-xs text-slate-400 mb-1">
+                    <span>نسبة الإنجاز</span>
+                    <span className="font-bold text-[#0038A8]">{project.progress}%</span>
+                  </div>
+                  <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                    <div
+                      className="h-full rounded-full transition-all"
+                      style={{
+                        width: `${project.progress}%`,
+                        backgroundColor: project.progress === 100 ? "#0038A8" : "#FFDE00",
+                      }}
+                    ></div>
+                  </div>
+                </div>
+
+                <div className="text-xs font-bold text-slate-700 pt-2 border-t border-slate-100 flex items-center justify-between">
+                  <span>الميزانية التقديرية:</span>
+                  <span className="text-[#0038A8]">{project.budget}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== MAP & DISCOVERY ===== */}
+      <section className="py-12 px-4 bg-white border-t border-slate-200">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <div className="text-xs text-[#0038A8] font-bold mb-1">الموقع الجغرافي والمؤهلات</div>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-3">
+                أربعاء الساحل: امتداد بحري وتراث سوسي أصيل
+              </h2>
+              <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                تحد جماعة أربعاء الساحل المحيط الأطلسي غرباً، وجماعة أكلو شمالاً، وجماعة مير اللفت جنوباً، وجماعتي بونعمان وسيدي بوعبداللي شرقاً. يشكل سوقها الأسبوعي (يوم الأربعاء) قطباً تجارياً محورياً بإقليم تيزنيت يستقطب زواراً وفلاحين من شتى المناطق.
+              </p>
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                <div className="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                  <div className="text-xs text-slate-400">الحدود البحرية:</div>
+                  <div className="font-bold text-slate-800 text-sm">واجهة المحيط الأطلسي</div>
+                </div>
+                <div className="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                  <div className="text-xs text-slate-400">السوق الأسبوعي:</div>
+                  <div className="font-bold text-slate-800 text-sm">كل يوم أربعاء</div>
+                </div>
+              </div>
+              <Link
+                href="/madina/panorama"
+                className="inline-block bg-[#0038A8] hover:bg-[#00226B] text-white text-xs font-bold px-6 py-3 rounded-xl transition shadow-sm"
+              >
+                استكشف جغرافيا وتاريخ الجماعة ←
+              </Link>
+            </div>
+
+            {/* Map visual card */}
+            <div className="bg-gradient-to-br from-[#00226B] to-[#0038A8] rounded-2xl p-6 text-white text-center shadow-lg">
+              <div className="text-4xl mb-3">🌊 🗺️ ⛰️</div>
+              <h3 className="font-black text-lg mb-1">موقع جماعة أربعاء الساحل على الخريطة</h3>
+              <p className="text-xs text-blue-200 mb-4 max-w-sm mx-auto">
+                دائرة تيزنيت، إقليم تيزنيت، جهة سوس ماسة، المملكة المغربية.
+              </p>
+              <div className="flex justify-center gap-3">
+                <a
+                  href="https://www.google.com/maps/search/Arbaa+Sahel+Tiznit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#FFDE00] text-[#00226B] hover:bg-yellow-400 font-extrabold text-xs px-5 py-2.5 rounded-lg transition"
+                >
+                  فتح عبر Google Maps
+                </a>
+                <Link
+                  href="/contact"
+                  className="bg-white/10 hover:bg-white/20 text-white font-bold text-xs px-4 py-2.5 rounded-lg border border-white/20 transition"
+                >
+                  العنوان والتواصل
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
