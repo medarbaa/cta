@@ -49,7 +49,7 @@ export default function SplashScreen() {
           <div className="splash__ring" />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={`${BASE}/logo2.PNG`}
+            src={`${BASE}/logo2.png`}
             alt="شعار الجماعة الترابية أربعاء الساحل"
             width={170}
             height={170}

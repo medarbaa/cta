@@ -44,7 +44,7 @@ export default function Header() {
             {/* Real Logo */}
             <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-xl overflow-hidden shadow-sm border border-slate-200 bg-white p-0.5">
               <Image
-                src= {process.env.NODE_ENV === "production" ? "/cta/logo2.PNG" : "/logo2.PNG"}
+                src= {process.env.NODE_ENV === "production" ? "/cta/logo2.png" : "/logo2.png"}
                 alt="شعار الجماعة الترابية أربعاء الساحل"
                 fill
                 className="object-contain"
