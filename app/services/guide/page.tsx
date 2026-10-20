@@ -4,9 +4,9 @@ export default function CouncilPage() {
   return (
     <ComingSoon
       title="مجلس الجماعة"
-      breadcrumb={[{ label: "الجماعة", href: "/jamaa" }, { label: "مجلس الجماعة" }]}
-      backHref="/jamaa"
-      backLabel="الرجوع إلى قسم الجماعة"
+      breadcrumb={[{ label: "خدمات المواطن", href: "/services" }]}
+      backHref="/services"
+      backLabel="الرجوع إلى قسم خدمات المواطن"
     />
   );
 }
