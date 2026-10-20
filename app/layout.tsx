@@ -16,7 +16,11 @@ export const metadata: Metadata = {
   title: "الجماعة الترابية أربعاء الساحل | إقليم تيزنيت — الموقع الرسمي",
   description:
     "البوابة الإلكترونية الرسمية للجماعة الترابية أربعاء الساحل، دائرة تيزنيت، إقليم تيزنيت، جهة سوس ماسة، المملكة المغربية. خدمات المواطن، أخبار المجلس والمشاريع التنموية.",
-  keywords: "أربعاء الساحل, جماعة أربعاء الساحل, إقليم تيزنيت, سوس ماسة, Commune Arbaa Sahel Tiznit",
+  keywords:
+    "أربعاء الساحل, جماعة أربعاء الساحل, إقليم تيزنيت, سوس ماسة, Commune Arbaa Sahel Tiznit",
+  icons: {
+    icon: process.env.NODE_ENV === "production" ? "/cta/logo.jpg" : "/logo.jpg",
+  },
 };
 
 export default function RootLayout({
@@ -26,15 +30,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl" className={cairo.variable} suppressHydrationWarning>
-  <head>
-    <script
-      dangerouslySetInnerHTML={{
-        __html: `try{if(localStorage.getItem('splash_seen')==='true'){document.documentElement.classList.add('splash-seen')}}catch(e){}`,
-      }}
-    />
-    <link rel="icon" href={process.env.NODE_ENV === "production" ? "/cta/logo.jpg" : "/logo.jpg"} />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem('splash_seen')==='true'){document.documentElement.classList.add('splash-seen')}}catch(e){}`,
+          }}
+        />
       </head>
       <body
         className="font-[family-name:var(--font-cairo)] antialiased min-h-screen flex flex-col bg-slate-50 text-slate-800"

@@ -36,31 +36,7 @@ export default function CouncilPage() {
               </p>
             </div>
 
-            {/* Party distribution */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
-              <h3 className="font-bold text-gray-800 mb-4">توزيع المقاعد حسب الأحزاب</h3>
-              <div className="space-y-3">
-                {[
-                  { party: "حزب الاستقلال", seats: 9, color: "#006233" },
-                  { party: "التجمع الوطني للأحرار", seats: 6, color: "#C1272D" },
-                  { party: "الاتحاد الاشتراكي", seats: 5, color: "#e54040" },
-                  { party: "حزب العدالة والتنمية", seats: 3, color: "#f5a623" },
-                ].map((p) => (
-                  <div key={p.party} className="flex items-center gap-3">
-                    <div className="w-36 text-sm text-gray-700 text-left">{p.party}</div>
-                    <div className="flex-1 h-6 bg-gray-100 rounded-full overflow-hidden">
-                      <div
-                        className="h-full rounded-full flex items-center justify-end pr-2"
-                        style={{ width: `${(p.seats / 23) * 100}%`, backgroundColor: p.color }}
-                      >
-                        <span className="text-white text-xs font-bold">{p.seats}</span>
-                      </div>
-                    </div>
-                    <span className="text-xs text-gray-500 w-16">{p.seats} مقعد</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+
 
             {/* Members table */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">

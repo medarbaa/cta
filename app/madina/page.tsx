@@ -1,42 +1,68 @@
 import Link from "next/link";
+import { Sunrise, ScrollText, Landmark, ArrowLeft } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import PageHeader from "@/components/PageHeader";
 
-const sidebarItems = [
-  { label: "بانوراما", href: "/madina/panorama" },
-  { label: "نبذة تاريخية", href: "/madina/history" },
-  { label: "التراث", href: "/madina/heritage" },
+const sections = [
+  {
+    label: "بانوراما",
+    href: "/madina/panorama",
+    Icon: Sunrise,
+    desc: "لمحة عامة عن الجماعة وموقعها الجغرافي والمناخي",
+  },
+  {
+    label: "نبذة تاريخية",
+    href: "/madina/history",
+    Icon: ScrollText,
+    desc: "تاريخ المنطقة عبر الحقب الزمنية المختلفة",
+  },
+  {
+    label: "التراث",
+    href: "/madina/heritage",
+    Icon: Landmark,
+    desc: "الموروث الثقافي والطبيعي للمنطقة",
+  },
 ];
 
 export default function MadinaPage() {
   return (
     <div style={{ direction: "rtl" }}>
-      <PageHeader title="مدينتي" subtitle="تعرف على جماعة اربعاء الساحل — التاريخ والطبيعة والتراث" />
+      <PageHeader
+        title="مدينتي"
+        subtitle="تعرف على الجماعة الترابية أربعاء الساحل: التاريخ والطبيعة والتراث"
+      />
       <Breadcrumb items={[{ label: "مدينتي" }]} />
+
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
-          <h2 className="text-xl font-bold text-green-800 mb-3">اكتشف اربعاء الساحل</h2>
-          <p className="text-gray-600 text-sm leading-relaxed">
-            جماعة اربعاء الساحل مجال جغرافي متميز يجمع بين غنى الطبيعة الساحلية وعمق التراث
-            الأمازيغي العريق، وموقعها الاستراتيجي على ساحل المحيط الأطلسي يجعل منها وجهة سياحية
-            وطبيعية بامتياز.
+        <section className="bg-white rounded-xl shadow-sm border border-slate-200 border-t-4 border-t-[#FFDE00] p-6 mb-8">
+          <h2 className="text-xl font-bold text-[#0038A8] mb-3">اكتشف أربعاء الساحل</h2>
+          <p className="text-slate-600 text-[15px] leading-loose">
+            الجماعة الترابية أربعاء الساحل مجال جغرافي متميز يجمع بين الطبيعة الساحلية والتراث
+            الأمازيغي، وتطل بموقعها على ساحل المحيط الأطلسي.
           </p>
-        </div>
+        </section>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { label: "بانوراما", href: "/madina/panorama", icon: "🌅", desc: "لمحة عامة عن الجماعة وموقعها الجغرافي والمناخي" },
-            { label: "نبذة تاريخية", href: "/madina/history", icon: "📜", desc: "تاريخ المنطقة عبر الحقب الزمنية المختلفة" },
-            { label: "التراث", href: "/madina/heritage", icon: "🏺", desc: "الموروث الثقافي والحضاري والمعماري للمنطقة" },
-          ].map((item) => (
+          {sections.map(({ label, href, Icon, desc }) => (
             <Link
-              key={item.href}
-              href={item.href}
-              className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 hover:shadow-md hover:border-green-300 transition-all group text-center"
+              key={href}
+              href={href}
+              className="service-card bg-white rounded-xl border border-slate-200 shadow-sm p-6 group text-center"
             >
-              <div className="text-5xl mb-4">{item.icon}</div>
-              <h3 className="font-bold text-gray-800 text-lg mb-2 group-hover:text-green-700 transition-colors">{item.label}</h3>
-              <p className="text-sm text-gray-500">{item.desc}</p>
-              <div className="mt-4 text-green-700 text-sm font-medium">اقرأ المزيد ←</div>
+              <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-[#EBF2FF] text-[#0038A8] flex items-center justify-center group-hover:scale-105 transition-transform">
+                <Icon className="w-8 h-8" strokeWidth={1.6} />
+              </div>
+              <h3 className="font-bold text-slate-800 text-lg mb-2 group-hover:text-[#0038A8] transition-colors">
+                {label}
+              </h3>
+              <p className="text-sm text-slate-500 leading-relaxed">{desc}</p>
+              <div className="mt-4 text-[#0038A8] text-sm font-semibold inline-flex items-center gap-1.5">
+                اقرأ المزيد
+                <ArrowLeft
+                  className="w-4 h-4 group-hover:-translate-x-1 transition-transform"
+                  strokeWidth={2.25}
+                />
+              </div>
             </Link>
           ))}
         </div>

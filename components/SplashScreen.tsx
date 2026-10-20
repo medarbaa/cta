@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "splash_seen";
-const DURATION = 3000;
+const DURATION = 2800;
 const BASE = process.env.NODE_ENV === "production" ? "/cta" : "";
 
 export default function SplashScreen() {

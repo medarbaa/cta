@@ -1,3 +1,4 @@
+import { Handshake, CalendarDays, Layers, Banknote } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import Sidebar from "@/components/Sidebar";
 import PageHeader from "@/components/PageHeader";
@@ -14,16 +15,17 @@ const sidebarItems = [
   { label: "التعاون والاتفاقيات", href: "/jamaa/cooperation" },
 ];
 
+// عدّل هذه البيانات حسب الاتفاقيات الفعلية الموقعة
 const partnerships = [
   {
-    partner: "إقليم القنيطرة",
+    partner: "عمالة إقليم تيزنيت",
     type: "اتفاقية شراكة",
     domain: "التجهيز وإعداد التراب",
     year: 2023,
     amount: "5.2 مليون درهم",
   },
   {
-    partner: "المكتب الوطني للكهرباء والماء الصالح للشرب",
+    partner: "شركة الجهوية متعددة الخدمات سوس ماسة",
     type: "اتفاقية إطار",
     domain: "التزويد بالماء الشروب",
     year: 2022,
@@ -34,10 +36,10 @@ const partnerships = [
     type: "برنامج دعم",
     domain: "تحديث الإدارة الترابية",
     year: 2024,
-    amount: "800,000 درهم",
+    amount: "0.8 مليون درهم",
   },
   {
-    partner: "وزارة الفلاحة والصيد البحري",
+    partner: "وزارة الفلاحة",
     type: "اتفاقية شراكة",
     domain: "التنمية القروية والغابوية",
     year: 2023,
@@ -48,53 +50,70 @@ const partnerships = [
 export default function CooperationPage() {
   return (
     <div style={{ direction: "rtl" }}>
-      <PageHeader title="التعاون والاتفاقيات" subtitle="شراكات وتعاون جماعة اربعاء الساحل" />
-      <Breadcrumb items={[{ label: "الجماعة", href: "/jamaa" }, { label: "التعاون والاتفاقيات" }]} />
+      <PageHeader
+        title="التعاون والاتفاقيات"
+        subtitle="شراكات وتعاون الجماعة الترابية أربعاء الساحل"
+      />
+      <Breadcrumb
+        items={[{ label: "الجماعة", href: "/jamaa" }, { label: "التعاون والاتفاقيات" }]}
+      />
+
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row gap-8">
           <Sidebar title="الجماعة" items={sidebarItems} currentPath="/jamaa/cooperation" />
-          <main className="flex-1">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
-              <h2 className="text-xl font-bold text-green-800 mb-3">إطار التعاون والشراكة</h2>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                تحرص جماعة اربعاء الساحل على بناء شراكات فاعلة مع مختلف المؤسسات والهيئات الحكومية
-                وغير الحكومية، سعياً إلى تعبئة الموارد وإنجاز المشاريع التنموية المنهجية لفائدة ساكنتها.
+
+          <main className="flex-1 min-w-0">
+            <section className="bg-white rounded-xl shadow-sm border border-slate-200 border-t-4 border-t-[#FFDE00] p-6 mb-6">
+              <h2 className="text-xl font-bold text-[#0038A8] mb-3">إطار التعاون والشراكة</h2>
+              <p className="text-slate-600 text-[15px] leading-loose">
+                تحرص الجماعة الترابية أربعاء الساحل على بناء شراكات فاعلة مع مختلف المؤسسات والهيئات
+                الحكومية وغير الحكومية، سعياً إلى تعبئة الموارد وإنجاز المشاريع التنموية لفائدة
+                ساكنتها.
               </p>
-            </div>
+            </section>
 
             <div className="space-y-4">
-              {partnerships.map((p, i) => (
-                <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+              {partnerships.map((p) => (
+                <article
+                  key={`${p.partner}-${p.year}`}
+                  className="service-card bg-white rounded-xl border border-slate-200 shadow-sm p-5"
+                >
                   <div className="flex items-start gap-4">
-                    <div
-                      className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center text-white font-bold text-lg"
-                      style={{ backgroundColor: "#006233" }}
-                    >
-                      🤝
+                    <div className="w-12 h-12 rounded-full flex-shrink-0 bg-gradient-to-br from-[#00226B] to-[#0038A8] border-2 border-[#FFDE00] text-white flex items-center justify-center">
+                      <Handshake className="w-6 h-6" strokeWidth={1.5} />
                     </div>
-                    <div className="flex-1">
-                      <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <h3 className="font-bold text-gray-800">{p.partner}</h3>
-                        <span className="text-xs bg-green-50 text-green-700 px-2 py-0.5 rounded-full">
+
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-2 mb-3">
+                        <h3 className="font-bold text-slate-800">{p.partner}</h3>
+                        <span className="inline-flex items-center gap-1 text-xs font-semibold bg-[#EBF2FF] text-[#0038A8] px-2.5 py-0.5 rounded-full">
                           {p.type}
                         </span>
-                        <span className="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">
+                        <span className="inline-flex items-center gap-1 text-xs font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-full">
+                          <CalendarDays className="w-3 h-3" strokeWidth={2} />
                           {p.year}
                         </span>
                       </div>
-                      <div className="grid grid-cols-2 gap-4 text-sm">
-                        <div>
-                          <span className="text-gray-400 text-xs">المجال: </span>
-                          <span className="text-gray-700">{p.domain}</span>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                        <div className="flex items-center gap-2">
+                          <Layers className="w-4 h-4 text-[#0038A8] flex-shrink-0" strokeWidth={1.75} />
+                          <span>
+                            <span className="text-slate-400 text-xs">المجال: </span>
+                            <span className="text-slate-700">{p.domain}</span>
+                          </span>
                         </div>
-                        <div>
-                          <span className="text-gray-400 text-xs">قيمة الشراكة: </span>
-                          <span className="font-semibold text-green-800">{p.amount}</span>
+                        <div className="flex items-center gap-2">
+                          <Banknote className="w-4 h-4 text-[#0038A8] flex-shrink-0" strokeWidth={1.75} />
+                          <span>
+                            <span className="text-slate-400 text-xs">قيمة الشراكة: </span>
+                            <span className="font-semibold text-[#00226B]">{p.amount}</span>
+                          </span>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </main>

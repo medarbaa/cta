@@ -1,3 +1,4 @@
+import { UserRound, Users } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import Sidebar from "@/components/Sidebar";
 import PageHeader from "@/components/PageHeader";
@@ -17,51 +18,59 @@ const sidebarItems = [
 
 export default function BureauPage() {
   const bureau = councilMembers.slice(0, 4);
+
   return (
     <div style={{ direction: "rtl" }}>
-      <PageHeader title="المكتب" subtitle="أعضاء مكتب مجلس جماعة اربعاء الساحل" />
+      <PageHeader title="المكتب" subtitle="أعضاء مكتب مجلس الجماعة الترابية أربعاء الساحل" />
       <Breadcrumb items={[{ label: "الجماعة", href: "/jamaa" }, { label: "المكتب" }]} />
+
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row gap-8">
           <Sidebar title="الجماعة" items={sidebarItems} currentPath="/jamaa/bureau" />
+
           <main className="flex-1">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
-              <h2 className="text-xl font-bold text-green-800 mb-4">تكوين المكتب</h2>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                يتشكل مكتب مجلس جماعة اربعاء الساحل من الرئيس ونوابه المنتخبين من قبل أعضاء المجلس
-                الجماعي في دورته التأسيسية المنعقدة عقب انتخابات 2021.
+            <section className="bg-white rounded-xl shadow-sm border border-slate-200 border-t-4 border-t-[#FFDE00] p-6 mb-6">
+              <h2 className="text-xl font-bold text-[#0038A8] mb-3">تكوين المكتب</h2>
+              <p className="text-slate-600 text-[15px] leading-loose mb-6">
+                يتألف مكتب مجلس الجماعة الترابية أربعاء الساحل من الرئيس ونوابه، وينتخب المجلس
+                الجماعي أعضاءه في دورته التأسيسية المنعقدة عقب انتخابات 2021.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {bureau.map((member) => (
-                  <div
-                    key={member.id}
-                    className="border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div
-                        className="w-16 h-16 rounded-full flex items-center justify-center text-white text-3xl flex-shrink-0"
-                        style={{ backgroundColor: "#006233" }}
-                      >
-                        👤
-                      </div>
-                      <div>
-                        <div className="font-bold text-gray-800">{member.name}</div>
-                        <div
-                          className="text-sm font-medium mt-0.5"
-                          style={{ color: "#C1272D" }}
-                        >
-                          {member.role}
+
+              {bureau.length === 0 ? (
+                <div className="text-center py-10 text-slate-500">
+                  <Users className="w-10 h-10 mx-auto mb-3 text-slate-300" strokeWidth={1.5} />
+                  لا توجد بيانات متاحة حالياً.
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  {bureau.map((member) => (
+                    <article
+                      key={member.id}
+                      className="service-card border border-slate-200 rounded-xl p-5 bg-white"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#00226B] to-[#0038A8] border-2 border-[#FFDE00] flex items-center justify-center text-white flex-shrink-0">
+                          <UserRound className="w-8 h-8" strokeWidth={1.5} />
                         </div>
-                        <div className="text-xs text-gray-500 mt-1">{member.party}</div>
+                        <div className="min-w-0">
+                          <div className="font-bold text-slate-800">{member.name}</div>
+                          <div className="text-sm font-semibold mt-0.5 text-[#0038A8]">
+                            {member.role}
+                          </div>
+                          <div className="text-xs text-slate-500 mt-1">{member.party}</div>
+                        </div>
                       </div>
-                    </div>
-                    <div className="mt-3 pt-3 border-t border-gray-100">
-                      <div className="text-xs text-gray-500">اللجنة: <span className="font-medium text-gray-700">{member.commission}</span></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+                      <div className="mt-4 pt-3 border-t border-slate-100">
+                        <div className="text-xs text-slate-500">
+                          اللجنة:{" "}
+                          <span className="font-semibold text-slate-700">{member.commission}</span>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              )}
+            </section>
           </main>
         </div>
       </div>

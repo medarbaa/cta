@@ -8,10 +8,10 @@ export const communeInfo = {
   president: "السيد إبراهيم بوخالد",
   province: "إقليم تيزنيت",
   region: "جهة سوس ماسة",
-  population: "8,820",
+  population: "+8000",
   households: "2,650",
   area: "345",
-  douwars: 91,
+  douwars: +80,
   councilMembers: 18,
   phone: "0528-86-XX-XX",
   fax: "0528-86-XX-XX",
@@ -19,8 +19,8 @@ export const communeInfo = {
   facebookUrl: "https://www.facebook.com/profile.php?id=100081016219910",
   address: "مقر الجماعة الترابية أربعاء الساحل، دائرة تيزنيت، إقليم تيزنيت",
   postalCode: "85000",
-  latitude: 29.7428,
-  longitude: -9.8375,
+  latitude: 29.6103315,
+  longitude: -9.8873661,
   logo: process.env.NODE_ENV === "production" ? "/cta/logo.jpg" : "/logo.jpg",
 };
 
@@ -299,10 +299,10 @@ export const announcements = [
 ];
 
 export const stats = [
-  { label: "عدد السكان (إحصاء 2024)", value: "8,820", unit: "نسمة", icon: "users" },
-  { label: "المساحة الإجمالية", value: "345", unit: "كم²", icon: "map" },
-  { label: "عدد الدواوير القروية", value: "91", unit: "دواراً", icon: "home" },
-  { label: "عدد الأسر", value: "2,650", unit: "أسرة", icon: "family" },
+  { label: "عدد السكان (إحصاء 2026)", value: "+8000", unit: "نسمة", icon: "users" },
+  { label: "المساحة الإجمالية", value: "+300", unit: "كم²", icon: "map" },
+  { label: "عدد الدواوير القروية", value: "+90", unit: "دواراً", icon: "home" },
+  { label: "عدد الأسر", value: "+2000", unit: "أسرة", icon: "family" },
 ];
 
 export const navItems = [
